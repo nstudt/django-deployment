@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends "app5/base.html" %}
+{% comment %} {{% load staticfiles %}} {% endcomment %}
+{% comment %} {% load extras %} {% endcomment %}
+    {% block body_block %}
+        <h1>Registration Page</h1>
+
+        {% if registered %}
+            <p>Thanks for registering</p>
+
+        {% else %}
+         <h2>Register Here</h2>
+         <h3>Fill out form</h3>
+
+         <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{ user_form.as_p }}
+          {{ profile_form.as_p }}
+          <input type="submit" value="Register">
+        </form>
+        {% endif %}
+    {% endblock %}
